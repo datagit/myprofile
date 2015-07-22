@@ -1,0 +1,71 @@
+frontend_homepage:
+    path:     /
+    defaults: { _controller: FrontendBundle:Default:index }
+
+frontend_profile_register:
+    path:     /register
+    defaults: { _controller: FrontendBundle:Default:register }
+
+frontend_profile_create:
+    path:     /create
+    defaults: { _controller: FrontendBundle:Default:create }
+
+frontend_profile_thanks:
+    path:     /thanks/{email}
+    defaults: { _controller: FrontendBundle:Default:thanks }
+
+frontend_profile_login:
+    path:     /loginsm
+    defaults: { _controller: FrontendBundle:Layout:loginsm }
+
+frontend_profile_logout:
+    path:     /logout
+    defaults: { _controller: FrontendBundle:Layout:logout }
+
+frontend_profile_edit:
+    path:     /edit
+    defaults: { _controller: FrontendBundle:Layout:edit }
+
+frontend_profile_update_profile:
+    path:     /profile/update
+    defaults: { _controller: FrontendBundle:Layout:updateProfile }
+
+frontend_profile_update_jobs_history_profile:
+    path:     /profile/jobs/update
+    defaults: { _controller: FrontendBundle:Layout:updateJobsHistoryProfile }
+
+frontend_profile_remove_jobs_history_profile:
+    path:     /profile/jobs/remove
+    defaults: { _controller: FrontendBundle:Layout:removeJobsHistoryProfile }
+
+frontend_profile_update_skill_profile:
+    path:     /profile/skill/update
+    defaults: { _controller: FrontendBundle:Layout:updateSkillProfile }
+
+frontend_profile_remove_skill_profile:
+    path:     /profile/skill/remove
+    defaults: { _controller: FrontendBundle:Layout:removeSkillProfile }
+
+frontend_profile_update_education_profile:
+    path:     /profile/education/update
+    defaults: { _controller: FrontendBundle:Layout:updateEducationProfile }
+
+frontend_profile_remove_education_profile:
+    path:     /profile/education/remove
+    defaults: { _controller: FrontendBundle:Layout:removeEducationProfile }
+
+frontend_profile_update_photo_profile:
+    path:     /profile/photo/update
+    defaults: { _controller: FrontendBundle:Layout:updatePhotoProfile }
+
+frontend_profile_move_photo_profile:
+    path:     /profile/photo/move
+    defaults: { _controller: FrontendBundle:Layout:movePhotoProfile }
+
+frontend_profile_view_photo:
+    path:     /view/photo/{filename}/{size}/{istemp}
+    defaults: { _controller: FrontendBundle:Layout:viewPhoto, istemp: 0 }
+
+frontend_profile_activity_post:
+    path:     /activity/post
+    defaults: { _controller: FrontendBundle:Activity:post }

@@ -1,0 +1,30 @@
+follow:
+    path:     /
+    defaults: { _controller: "DataSourceBundle:Follow:index" }
+
+follow_show:
+    path:     /{id}/show
+    defaults: { _controller: "DataSourceBundle:Follow:show" }
+
+follow_new:
+    path:     /new
+    defaults: { _controller: "DataSourceBundle:Follow:new" }
+
+follow_create:
+    path:     /create
+    defaults: { _controller: "DataSourceBundle:Follow:create" }
+    methods:  POST
+
+follow_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DataSourceBundle:Follow:edit" }
+
+follow_update:
+    path:     /{id}/update
+    defaults: { _controller: "DataSourceBundle:Follow:update" }
+    methods:  [POST, PUT]
+
+follow_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DataSourceBundle:Follow:delete" }
+    methods:  [POST, DELETE]

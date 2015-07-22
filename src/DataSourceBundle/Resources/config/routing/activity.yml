@@ -1,0 +1,30 @@
+activity:
+    path:     /
+    defaults: { _controller: "DataSourceBundle:Activity:index" }
+
+activity_show:
+    path:     /{id}/show
+    defaults: { _controller: "DataSourceBundle:Activity:show" }
+
+activity_new:
+    path:     /new
+    defaults: { _controller: "DataSourceBundle:Activity:new" }
+
+activity_create:
+    path:     /create
+    defaults: { _controller: "DataSourceBundle:Activity:create" }
+    methods:  POST
+
+activity_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DataSourceBundle:Activity:edit" }
+
+activity_update:
+    path:     /{id}/update
+    defaults: { _controller: "DataSourceBundle:Activity:update" }
+    methods:  [POST, PUT]
+
+activity_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DataSourceBundle:Activity:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('bundles/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('bundles/frontend/css/blog-home.css') }}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/backend/js/html5shiv.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/respond.min.js') }}"></script>
+    <![endif]-->
+
+    <!-- jQuery -->
+    <script src="{{ asset('bundles/frontend/js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('bundles/frontend/js/bootstrap.min.js') }}"></script>
+
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+{{ include('@Frontend/_Partial/_navigation.html.twig') }}
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+            {% block body %}{% endblock %}
+        </div>
+        <!-- Blog Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            {{ include('@Frontend/_Partial/_recommendupdate.html.twig') }}
+
+            {{ render(controller('FrontendBundle:Layout:renderRecommendProfile')) }}
+
+            {{ render(controller('FrontendBundle:Layout:renderTopFriendsActivities')) }}
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    {{ include('@Frontend/_Partial/_footter.html.twig') }}
+
+
+    {{ include('@Frontend/_Partial/_modal.html.twig') }}
+
+</div>
+<!-- /.container -->
+
+{% block javascripts %}{% endblock %}
+</body>
+
+</html>
+

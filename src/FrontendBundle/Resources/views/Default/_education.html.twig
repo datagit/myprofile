@@ -1,0 +1,14 @@
+{% if educationJson is not empty %}
+    {% set eduacations = educationJson | json_decode %}
+    {% set eduacations = sort_by_order(eduacations) %}
+    {% set i = 1 %}
+    {% for edu in eduacations %}
+        <tr>
+            <td><a href="#" class="edit_education" onclick="editEducationProfile('{{ edu|json_encode }}')" data-toggle="modal" data-target="#myModalEducation">{{ i }}</a></td>
+            <td>{{ edu['major'] }}</td>
+            <td>{{ edu['start_time'] }} - {{ edu['end_time'] }}</td>
+            <td>{{ edu['name'] }}</td>
+        </tr>
+        {% set i = i + 1 %}
+    {% endfor %}
+{% endif %}

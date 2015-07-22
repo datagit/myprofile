@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Profile list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Birthday</th>
+                <th>Phone</th>
+                <th>Photo</th>
+                <th>Job_title</th>
+                <th>Social_network</th>
+                <th>Sex</th>
+                <th>Salary_min</th>
+                <th>Salary_max</th>
+                <th>Major_category_id</th>
+                <th>Categories_json</th>
+                <th>Education_json</th>
+                <th>Skill_json</th>
+                <th>Job_history_json</th>
+                <th>Last_view</th>
+                <th>Last_login</th>
+                <th>Profile_type</th>
+                <th>Status</th>
+                <th>View</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('profile_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.password }}</td>
+                <td>{{ entity.firstname }}</td>
+                <td>{{ entity.lastname }}</td>
+                <td>{{ entity.birthday }}</td>
+                <td>{{ entity.phone }}</td>
+                <td>{{ entity.photo }}</td>
+                <td>{{ entity.jobtitle }}</td>
+                <td>{{ entity.socialnetwork }}</td>
+                <td>{{ entity.sex }}</td>
+                <td>{{ entity.salarymin }}</td>
+                <td>{{ entity.salarymax }}</td>
+                <td>{{ entity.majorcategoryid }}</td>
+                <td>{{ entity.categoriesjson }}</td>
+                <td>{{ entity.educationjson }}</td>
+                <td>{{ entity.skilljson }}</td>
+                <td>{{ entity.jobhistoryjson }}</td>
+                <td>{% if entity.lastview %}{{ entity.lastview|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.lastlogin %}{{ entity.lastlogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.profiletype }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{{ entity.view }}</td>
+                <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updatedat %}{{ entity.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('profile_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('profile_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('profile_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

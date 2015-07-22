@@ -1,0 +1,13 @@
+services:
+#    frontend.example:
+#        class: FrontendBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    app.profile.action_listener:
+      class: FrontendBundle\EventListener\ProfileListener
+      tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+    app.twig_extension:
+      class: FrontendBundle\Twig\FrontendExtension
+      public: false
+      tags:
+          - { name: twig.extension }

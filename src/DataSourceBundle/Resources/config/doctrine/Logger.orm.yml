@@ -1,0 +1,24 @@
+# src/DataSourceBundle/Resources/config/doctrine/Logger.orm.yml
+DataSourceBundle\Entity\Logger:
+  repositoryClass: DataSourceBundle\Repository\LoggerRepository
+  type: entity
+  table: logger
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    todo:
+      type: string
+      length: 255
+    created_at:
+      type: datetime
+      nullable: true
+  oneToOne:
+    user:
+      targetEntity: User
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]

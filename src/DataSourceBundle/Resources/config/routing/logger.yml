@@ -1,0 +1,30 @@
+logger:
+    path:     /
+    defaults: { _controller: "DataSourceBundle:Logger:index" }
+
+logger_show:
+    path:     /{id}/show
+    defaults: { _controller: "DataSourceBundle:Logger:show" }
+
+logger_new:
+    path:     /new
+    defaults: { _controller: "DataSourceBundle:Logger:new" }
+
+logger_create:
+    path:     /create
+    defaults: { _controller: "DataSourceBundle:Logger:create" }
+    methods:  POST
+
+logger_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DataSourceBundle:Logger:edit" }
+
+logger_update:
+    path:     /{id}/update
+    defaults: { _controller: "DataSourceBundle:Logger:update" }
+    methods:  [POST, PUT]
+
+logger_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DataSourceBundle:Logger:delete" }
+    methods:  [POST, DELETE]

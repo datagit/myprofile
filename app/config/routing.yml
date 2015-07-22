@@ -1,0 +1,22 @@
+frontend:
+    resource: "@FrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+api:
+    resource: "@ApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
+data_source:
+    resource: "@DataSourceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

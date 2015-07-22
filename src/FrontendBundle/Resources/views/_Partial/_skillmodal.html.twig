@@ -1,0 +1,42 @@
+<div class="modal fade" id="myModalSkill" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add more skill</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="sname">Skill:</label>
+                    <input type="text" class="form-control" id="sname" name="sname" placeholder="Enter skill">
+                </div>
+                <div class="form-group">
+                    <label for="slevel">Level 1-100:</label>
+                    <select name="slevel" id="slevel">
+                        <option value=""></option>
+                        {% for i in 1..100 %}
+                            {% if i <= 15 %}
+                                <option value="{{ i }}">{{ i }}% - I suck</option>
+                            {% elseif i <= 65 %}
+                                <option value="{{ i }}">{{ i }}% - I know little</option>
+                            {% elseif i <= 80 %}
+                                <option value="{{ i }}">{{ i }}% - I'm good</option>
+                            {% else %}
+                                <option value="{{ i }}">{{ i }}% - I'm a guru</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="hidden" id="sverified" name="sverified" value="">
+                <input type="hidden" id="sid" name="sid" value="">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="btnSaveSkill" class="btn btn-primary" data-loading-text="Loading...">Save changes</button>
+                <button type="button" id="btnRemoveSkill" class="btn btn-primary" style="display: none;"  data-loading-text="Loading...">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>

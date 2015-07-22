@@ -1,0 +1,7 @@
+{% if jobHistoryJson is not empty %}
+    {% set jobs = jobHistoryJson | json_decode %}
+    {% set jobs = sort_by_order(jobs) %}
+    {% for job in jobs %}
+        {{ include('FrontendBundle:Default:_job.html.twig', { 'job': job }) }}
+    {% endfor %}
+{% endif %}

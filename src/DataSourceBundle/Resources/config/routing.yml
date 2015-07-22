@@ -1,0 +1,33 @@
+data_source_activity:
+    resource: "@DataSourceBundle/Resources/config/routing/activity.yml"
+    prefix:   /activity
+
+data_source_article:
+    resource: "@DataSourceBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+data_source_category:
+    resource: "@DataSourceBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+data_source_comment:
+    resource: "@DataSourceBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+data_source_follow:
+    resource: "@DataSourceBundle/Resources/config/routing/follow.yml"
+    prefix:   /follow
+
+data_source_logger:
+    resource: "@DataSourceBundle/Resources/config/routing/logger.yml"
+    prefix:   /logger
+
+data_source_profile:
+    resource: "@DataSourceBundle/Resources/config/routing/profile.yml"
+    prefix:   /profile
+
+data_source_user:
+    resource: "@DataSourceBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+

@@ -1,0 +1,9 @@
+<div class="list-group-item">
+    <h4 class="list-group-item-heading">
+        <a href="#" class="edit_experience" onclick="editJobProfile('{{ job|json_encode }}')" data-toggle="modal" data-target="#myModal" data-job="{{ job|json_encode }}">{{ job['title'] }} at {{ job['name'] }}</a>
+    </h4>
+
+    <p class="list-group-item-text">
+        {{ job['description'] }}
+    </p>
+</div>

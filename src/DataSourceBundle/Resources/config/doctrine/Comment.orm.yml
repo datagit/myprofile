@@ -1,0 +1,29 @@
+# src/DataSourceBundle/Resources/config/doctrine/Comment.orm.yml
+DataSourceBundle\Entity\Comment:
+  repositoryClass: DataSourceBundle\Repository\CommentRepository
+  type: entity
+  table: comment
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    comment:
+      type: string
+      length: 255
+    created_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    profileComment:
+      targetEntity: Profile
+      joinColumn:
+        name: profile_id
+        referencedColumnName: id
+    activity:
+      targetEntity: Activity
+      joinColumn:
+        name: activity_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]

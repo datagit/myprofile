@@ -1,0 +1,55 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add more experience</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="cname">Company:</label>
+                    <input type="text" class="form-control" id="cname" name="cname" placeholder="Enter company name">
+                </div>
+                <div class="form-group">
+                    <label for="ctitle">Title:</label>
+                    <input type="text" class="form-control" id="ctitle" name="ctitle" placeholder="Enter title">
+                </div>
+                <div class="form-group">
+                    <label for="ctitle">Start time:</label>
+                    <select name="cstart_time" id="cstart_time">
+                        <option value=""></option>
+                        {% for i in 2015..2000 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="cend_time">End time:</label>
+                    <select name="cend_time" id="cend_time">
+                        <option value=""></option>
+                        {% for i in 2015..2000 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cdescription">Description:</label>
+                    <textarea class="form-control" id="cdescription" name="cdescription" placeholder="description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="corder">Sort:</label>
+                    <input type="text" class="form-control" id="corder" name="corder" placeholder="number for sort">
+                </div>
+                <div class="checkbox">
+                    <label><input value="1" id="ccurrent_job" name="ccurrent_job" type="checkbox"> Current job</label>
+                </div>
+                <input type="hidden" id="cid" name="cid" value="">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="btnSaveExperience" class="btn btn-primary" data-loading-text="Loading...">Save changes</button>
+                <button type="button" id="btnRemoveExperience" class="btn btn-primary" style="display: none;"  data-loading-text="Loading...">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>

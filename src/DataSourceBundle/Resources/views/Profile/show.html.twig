@@ -1,0 +1,124 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Profile</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>First_name</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Last_name</th>
+                <td>{{ entity.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td>{{ entity.birthday }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ entity.phone }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ entity.photo }}</td>
+            </tr>
+            <tr>
+                <th>Job_title</th>
+                <td>{{ entity.jobtitle }}</td>
+            </tr>
+            <tr>
+                <th>Social_network</th>
+                <td>{{ entity.socialnetwork }}</td>
+            </tr>
+            <tr>
+                <th>Sex</th>
+                <td>{{ entity.sex }}</td>
+            </tr>
+            <tr>
+                <th>Salary_min</th>
+                <td>{{ entity.salarymin }}</td>
+            </tr>
+            <tr>
+                <th>Salary_max</th>
+                <td>{{ entity.salarymax }}</td>
+            </tr>
+            <tr>
+                <th>Major_category_id</th>
+                <td>{{ entity.majorcategoryid }}</td>
+            </tr>
+            <tr>
+                <th>Categories_json</th>
+                <td>{{ entity.categoriesjson }}</td>
+            </tr>
+            <tr>
+                <th>Education_json</th>
+                <td>{{ entity.educationjson }}</td>
+            </tr>
+            <tr>
+                <th>Skill_json</th>
+                <td>{{ entity.skilljson }}</td>
+            </tr>
+            <tr>
+                <th>Job_history_json</th>
+                <td>{{ entity.jobhistoryjson }}</td>
+            </tr>
+            <tr>
+                <th>Last_view</th>
+                <td>{{ entity.lastview|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Last_login</th>
+                <td>{{ entity.lastlogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Profile_type</th>
+                <td>{{ entity.profiletype }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+            <tr>
+                <th>View</th>
+                <td>{{ entity.view }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ entity.updatedat|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('profile') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('profile_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

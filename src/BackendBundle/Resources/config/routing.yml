@@ -1,0 +1,11 @@
+backend_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BackendBundle:Security:index }
+
+backend_login:
+    path:     /backend123/login
+    defaults: { _controller: BackendBundle:Security:login }
+
+backend_login_check:
+    path:     /backend123/login_check
+    defaults: { _controller: BackendBundle:Security:loginCheck }

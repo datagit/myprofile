@@ -1,0 +1,230 @@
+{% extends '@Frontend/one.layout.html.twig' %}
+{% block title %}
+    Welcome to hello world page
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+
+
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    <link href="{{ asset('bundles/frontend/css/cv.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('bundles/frontend/css/select2.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('bundles/frontend/css/bootstrap-editable.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('bundles/frontend/js/bootstrap-editable.min.js') }}"></script>
+    <script>
+        var linkUpdateProfileAtEdit = '{{ link_update_profile }}';
+        var linkUpdateJobsHistoryAtEdit = '{{ link_update_jobs_history_profile }}';
+        var linkRemoveJobsHistoryAtEdit = '{{ link_remove_jobs_history_profile }}';
+        var linkUpdateSkillAtEdit = '{{ link_update_skill_profile }}';
+        var linkRemoveSkillAtEdit = '{{ link_remove_skill_profile }}';
+
+        var linkUpdateEducationAtEdit = '{{ link_update_education_profile }}';
+        var linkRemoveEducationAtEdit = '{{ link_remove_education_profile }}';
+        var linkUpdatePhotoAtEdit = '{{ link_update_photo_profile }}';
+        var linkMovePhotoAtEdit = '{{ link_move_photo_profile }}';
+
+    </script>
+    <script src="{{ asset('bundles/frontend/js/profile.js') }}"></script>
+
+    <script src="{{ asset('bundles/frontend/js/select2.js') }}"></script>
+
+
+{% endblock %}
+
+{% block body %}
+
+    <!-- Blog Entries Column -->
+    <div class="resume">
+        <header class="page-header">
+            <h1 class="page-title">Resume of {{ entity.firstName }} {{ entity.lastName }}</h1>
+            <small><i class="fa fa-clock-o"></i> Last Updated on:
+                <time>{{ entity.updatedAt|date("D, M j, Y") }}</time>
+            </small>
+        </header>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading resume-heading">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-xs-12 col-sm-4">
+                                    <figure>
+                                        {% if entity.photo == '' %}
+                                            {% set photoUrl = asset('bundles/cdn/300x300.png') %}
+                                        {% else %}
+                                            {% set photoUrl = path('frontend_profile_view_photo', {'filename': entity.photo, 'size': '300x300'}) %}
+                                        {% endif %}
+                                        <a href="#" data-toggle="modal" data-target="#myModalUploadPhoto" class="a-circle-photo">
+                                            <img id="profilePhoto" class="img-circle img-responsive" alt=""
+                                             src="{{ photoUrl }}"></a>
+                                    </figure>
+
+                                    <div class="row">
+                                        <div id="socialNetwork" class="col-xs-12 social-btns">
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" data-toggle="modal" data-target="#myModalSocialNetwork" class="btn btn-social btn-block btn-google">
+                                                    <i class="fa fa-google"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" data-toggle="modal" data-target="#myModalSocialNetwork" class="btn btn-social btn-block btn-facebook">
+                                                    <i class="fa fa-facebook"></i> </a>
+                                            </div>
+
+                                            {#<div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">#}
+                                                {#<a href="#" class="btn btn-social btn-block btn-twitter">#}
+                                                    {#<i class="fa fa-twitter"></i> </a>#}
+                                            {#</div>#}
+
+                                            {#<div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">#}
+                                                {#<a href="#" class="btn btn-social btn-block btn-linkedin">#}
+                                                    {#<i class="fa fa-linkedin"></i> </a>#}
+                                            {#</div>#}
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" data-toggle="modal" data-target="#myModalSocialNetwork" class="btn btn-social btn-block btn-github">
+                                                    <i class="fa fa-github"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" data-toggle="modal" data-target="#myModalSocialNetwork" class="btn btn-social btn-block btn-stackoverflow">
+                                                    <i class="fa fa-stack-overflow"></i> </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12 col-sm-8">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <a href="#" id="firstName" data-type="text" data-pk="1"
+                                               data-placement="right"
+                                               data-placeholder="Required"
+                                               data-title="Enter your firstname">{{ entity.firstName == '' ? 'first name' : entity.firstName }}</a>
+
+                                            <a href="#" id="lastName" data-type="text" data-pk="1"
+                                               data-placement="right"
+                                               data-placeholder="Required"
+                                               data-title="Enter your lastname">{{ entity.lastName == '' ? 'last name' : entity.lastName }}</a>
+
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" id="jobTitle" data-type="text" data-pk="1"
+                                               data-placement="right"
+                                               data-placeholder="Required"
+                                               data-title="Enter your job_title">{{ entity.jobTitle == '' ? 'job title' : entity.jobTitle }}</a>
+                                        </li>
+                                        {% if current_categories != '' %}
+                                            <li class="list-group-item">
+                                                <a href="#" id="categoriesJson" data-type="select2" data-pk="1"
+                                                   data-title="Enter categoties job">{{ current_categories }}</a>
+                                            </li>
+                                        {% endif %}
+
+                                        <li class="list-group-item">Google Inc.</li>
+                                        <li class="list-group-item">
+                                            <a href="#" id="birthday" data-type="select" data-pk="1"
+                                               data-title="Enter your birthday">{{ entity.birthday }}
+                                            </a>,
+                                            <a href="#" id="sex" data-type="select" data-pk="1" data-value="" data-title="Select sex">
+                                                {{ entity.sex }}
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i>
+                                            <a href="#" id="phone" data-type="text" data-pk="1"
+                                               data-title="Enter your phone">{{ entity.phone }}</a>
+                                        </li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bs-callout bs-callout-danger">
+                        <h4>Summary</h4>
+                        <a href="#" id="summary" data-type="textarea" inputclass="summary_wh"
+                           data-pk="1" data-placeholder="Your summary here..."
+                           data-title="Enter summary">{{ entity.summary == '' ? 'Your summary here...' : entity.summary }}</a>
+                    </div>
+                    <div class="bs-callout bs-callout-danger">
+                        <h4>Research Interests</h4>
+
+                        <a href="#" id="researchInterests" data-type="textarea" inputclass="summary_wh"research interest
+                           data-pk="1" data-placeholder="Your summary here..."
+                           data-title="Enter summary">{{ entity.researchInterests == '' ? 'Your research interest here...' : entity.researchInterests }}</a>
+                    </div>
+
+                    <div class="bs-callout bs-callout-danger">
+                        <h4>Prior Experiences</h4>
+                        <a href="#" class="add_experience" data-toggle="modal" data-target="#myModal">add more..</a>
+                        <ul id="jobs_history" class="list-group">
+                            {{ include('FrontendBundle:Default:_jobs_history.html.twig', { 'jobHistoryJson': entity.jobHistoryJson }) }}
+                        </ul>
+                    </div>
+                    {#<div class="bs-callout bs-callout-danger">#}
+                        {#<h4>Articles for skill</h4>#}
+                        {#<ul class="list-group">#}
+                            {#<li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc<br/>#}
+                                {#<a href="#">oop php5</a>, <a href="#">array php json</a>#}
+                            {#</li>#}
+                            {#<li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>#}
+                            {#<li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>#}
+                            {#<li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>#}
+                            {#<li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>#}
+                            {#<li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>#}
+
+
+                        {#</ul>#}
+                    {#</div>#}
+                    <div class="bs-callout bs-callout-danger">
+                        <h4>Language and Platform Skills</h4>
+                        <a href="#" class="add_skill" data-toggle="modal" data-target="#myModalSkill">add more..</a>
+                        <ul id="skill" class="list-group">
+                            {{ include('FrontendBundle:Default:_skill.html.twig', { 'skillJson': entity.skillJson }) }}
+                        </ul>
+                    </div>
+                    <div class="bs-callout bs-callout-danger">
+                        <h4>Education</h4>
+                        <a href="#" class="add_education" data-toggle="modal" data-target="#myModalEducation">add more..</a>
+                        <table class="table table-striped table-responsive ">
+                            <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Degree</th>
+                                <th>Graduation Year</th>
+                                <th>School</th>
+                            </tr>
+                            </thead>
+                            <tbody id="education">
+                                {{ include('FrontendBundle:Default:_education.html.twig', { 'educationJson': entity.educationJson }) }}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    {{ include('@Frontend/_Partial/_jobmodal.html.twig') }}
+    <!-- Modal -->
+    {{ include('@Frontend/_Partial/_skillmodal.html.twig') }}
+    <!-- Modal -->
+    {{ include('@Frontend/_Partial/_educationmodal.html.twig') }}
+    <!-- Modal -->
+    {{ include('@Frontend/_Partial/_uploadphoto.html.twig') }}
+    <!-- Modal -->
+    {{ include('@Frontend/_Partial/_socialnetworkmodal.html.twig') }}
+
+
+{% endblock %}

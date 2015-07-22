@@ -1,0 +1,75 @@
+# src/DataSourceBundle/Resources/config/doctrine/Activity.orm.yml
+DataSourceBundle\Entity\Activity:
+  repositoryClass: DataSourceBundle\Repository\ActivityRepository
+  type: entity
+  table: activity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    title:
+      type: string
+      length: 255
+    description:
+      type: text
+      nullable: true
+    image:
+      type: string
+      length: 255
+      nullable: true
+    profile_point_json:
+      type: string
+      length: 255
+      nullable: true
+      options:
+        comment: list another profile point
+    point:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: total point of activity
+    start_date:
+      type: datetime
+      nullable: true
+      options:
+        comment: activity_type=2-job
+    end_date:
+      type: datetime
+      nullable: true
+      options:
+        comment: activity_type=2-job
+    activity_type:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: 0-activity, 1-article, 2-job
+    status:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: 1-public, 2-private
+    view:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: totla view of activity
+    created_at:
+      type: datetime
+      nullable: true
+    updated_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    profileActivity:
+      targetEntity: Profile
+      joinColumn:
+        name: profile_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]

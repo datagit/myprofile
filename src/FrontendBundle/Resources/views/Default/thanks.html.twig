@@ -1,0 +1,36 @@
+{% extends '@Frontend/blank.layout.html.twig' %}
+{% block title %}
+    Welcome to hello world page
+{% endblock %}
+{% block body %}
+
+    <style>
+        .btn_register {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+            width: 100%;
+        }
+
+        .form-horizontal {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div class="col-sm-3" style="float: none; margin: 0 auto;">
+        <div class="row">
+
+            thank you page
+            <!-- /.row -->
+
+            <hr>
+            <!-- Footer -->
+            {{ include('@Frontend/_Partial/_footter.html.twig') }}
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

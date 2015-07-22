@@ -1,0 +1,35 @@
+# src/DataSourceBundle/Resources/config/doctrine/Follow.orm.yml
+DataSourceBundle\Entity\Follow:
+  repositoryClass: DataSourceBundle\Repository\FollowRepository
+  type: entity
+  table: follow
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    status:
+      type: integer
+      nullable: true
+      options:
+        comment: 1-public, 2-private
+    created_at:
+      type: datetime
+      nullable: true
+    updated_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    follower:
+      targetEntity: Profile
+      joinColumn:
+        name: follower_id
+        referencedColumnName: id
+    followed:
+        targetEntity: Profile
+        joinColumn:
+          name: followed_id
+          referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]

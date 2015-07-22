@@ -1,0 +1,128 @@
+# src/DataSourceBundle/Resources/config/doctrine/Profile.orm.yml
+DataSourceBundle\Entity\Profile:
+  repositoryClass: DataSourceBundle\Repository\ProfileRepository
+  type: entity
+  table: profile
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    email:
+      type: string
+      length: 255
+      unique: true
+    password:
+      type: string
+      length: 255
+    first_name:
+      type: string
+      length: 255
+    last_name:
+      type: string
+      length: 255
+    birthday:
+      type: string
+      nullable: true
+    phone:
+      type: string
+      length: 255
+      nullable: true
+    photo:
+      type: string
+      length: 255
+      nullable: true
+    job_title:
+      type: string
+      length: 255
+      nullable: true
+    social_network:
+      type: text
+      nullable: true
+    sex:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: 1-male, 2-female, 3-other
+    summary:
+      type: text
+      nullable: true
+    research_interests:
+      type: text
+      nullable: true
+    salary_min:
+      type: integer
+      nullable: true
+    salary_max:
+      type: integer
+      nullable: true
+    major_category_id:
+      type: integer
+      nullable: true
+      options:
+        comment: major title job
+    categories_json:
+      type: text
+      nullable: true
+      options:
+        comment: list categories title job
+    education_json:
+      type: text
+      nullable: true
+      options:
+        comment: list process cleaning
+    skill_json:
+      type: text
+      nullable: true
+      options:
+        comment: list skill
+    job_history_json:
+      type: text
+      nullable: true
+      options:
+        comment: list job history
+    last_view:
+      nullable: true
+      type: datetime
+      options:
+        comment: date last view profile
+    last_login:
+      type: datetime
+      nullable: true
+      options:
+        comment: date last login
+    profile_type:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: 0-person, 1-company
+    status:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: 0-disable, 1-enable, 3-private, 4-allow search
+    view:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: total view profile
+    created_at:
+      type: datetime
+      nullable: true
+    updated_at:
+      type: datetime
+      nullable: true
+  oneToMany:
+    activities:
+      targetEntity: Activity
+      mappedBy: profileActivity
+    comments:
+      targetEntity: Comment
+      mappedBy: profileComment
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]

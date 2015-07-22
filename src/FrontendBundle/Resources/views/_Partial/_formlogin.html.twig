@@ -1,0 +1,71 @@
+<form id="frmLogin" class="navbar-form navbar-right" role="form" method="post">
+    <div class="form-group">
+        <input type="text" name="email" id="email" placeholder="Email" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+    </div>
+    <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-success">
+        Kết nối
+    </button>
+</form>
+
+<script>
+    $( document ).ready(function() {
+
+        $('#frmLogin').keypress(function (e) {
+            if (e.which == 13) {
+                var email = $('#email');
+                var pass = $('#password');
+                if(email.val() == '' ) {
+                    email.focus();
+                    return false;
+                }
+                if(pass.val() == '' ) {
+                    pass.focus();
+                    return false;
+                }
+                $('#loading-example-btn').click();
+                return false;
+            }
+        });
+
+        $('#myModalLogin').on('hide.bs.modal', function (e) {
+            location.reload();
+        });
+
+        $('#loading-example-btn').click(function () {
+            var email = $('#email');
+            var pass = $('#password');
+            if(email.val() == '' ) {
+                email.focus();
+                return;
+            }
+            if(pass.val() == '' ) {
+                pass.focus();
+                return;
+            }
+            var btn = $(this);
+            btn.button('loading');
+            $.ajax({
+                method: "POST",
+                url: "{{ action_login }}",
+                data: { email: email.val(), password: pass.val() }
+            })
+                    .done(function(res) {
+                        if( res.code == 200 ) {
+                            $('#myModalLogin').modal({
+                                keyboard: false
+                            });
+                        } else {
+                            alert(res.msg);
+                        }
+                    })
+                    .always(function () {
+                        btn.button('reset')
+                    });
+        });
+    });
+
+
+</script>

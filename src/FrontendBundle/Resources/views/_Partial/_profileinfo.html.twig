@@ -1,0 +1,28 @@
+<form class="navbar-form navbar-right" role="form">
+    <div class="btn-group">
+        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+            {{ email }} <span class="caret"></span>
+        </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="{{ edit_profile_link }}">edit profile</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a id="myLogout" href="{{ logout_link }}">logout</a></li>
+    </ul>
+        </div>
+</form>
+<script>
+$( document ).ready(function() {
+
+    $('#myLogout').bind('click', function() {
+        var r = confirm("Are you sure logout?");
+        if (r == true) {
+            window.location.href= $(this).attr('href');
+        } else {
+            return;
+        }
+
+    });
+});
+</script>

@@ -1,0 +1,36 @@
+# src/DataSourceBundle/Resources/config/doctrine/User.orm.yml
+DataSourceBundle\Entity\User:
+  repositoryClass: DataSourceBundle\Repository\UserRepository
+  type: entity
+  table: user
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    email:
+      type: string
+      length: 255
+      unique: true
+    username:
+      type: string
+      length: 255
+      unique: true
+    password:
+      type: string
+      length: 255
+    status:
+      type: integer
+      nullable: true
+      options:
+        default: 0
+        comment: 0-disable, 1-enable
+    created_at:
+      type: datetime
+      nullable: true
+    updated_at:
+      type: datetime
+      nullable: true
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]

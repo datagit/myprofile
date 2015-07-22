@@ -1,0 +1,75 @@
+{% extends '@Frontend/blank.layout.html.twig' %}
+{% block title %}
+    Welcome to hello world page
+{% endblock %}
+{% block body %}
+
+    <style>
+        .btn_register {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+            width: 100%;
+        }
+        .form-horizontal {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div class="col-sm-3" style="float: none; margin: 0 auto;">
+        <div class="row">
+            {#{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
+            {#novalidate="novalidate"#}
+            <form name="datasourcebundle_profile_register"
+                  method="post" action="{{ action }}"
+                  >
+
+            <div>
+                <h1>Make the most of your professional life</h1>
+            </div>
+
+            <div class="form-group">
+                <label>Tên:</label>
+                {{ form_errors(form.first_name) }}
+                {{ form_widget(form.first_name) }}
+            </div>
+
+            <div class="form-group">
+                <label>Họ:</label>
+                {{ form_errors(form.last_name) }}
+                {{ form_widget(form.last_name) }}
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
+                <span class="help-block">Email is available</span>
+            </div>
+
+            <div class="form-group">
+                <label>Password:</label>
+                {{ form_errors(form.password) }}
+                {{ form_widget(form.password) }}
+            </div>
+
+            <div class="form-group">
+                <label>Nhập lại Password:</label>
+                {{ form_errors(form.confirm_password) }}
+                {{ form_widget(form.confirm_password) }}
+            </div>
+
+            {{ form_widget(form.submit) }}
+
+            {{ form_end(form) }}
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Footer -->
+        {{ include('@Frontend/_Partial/_footter.html.twig') }}
+    </div>
+
+
+{% endblock %}
